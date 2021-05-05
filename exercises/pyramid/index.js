@@ -14,6 +14,21 @@
 //       ' ### '
 //       '#####'
 
-function pyramid(n) {}
+function pyramid(n) {
+    let midPoint = n - 1; 
+    let size = (2 * midPoint) + 1;
+    let output = '';
+    for (let i = 0; i < size; i++) {
+        output = output + ' ';
+    }
+
+    for (let i = 0; i < n; i++) {
+        let arr = output.split('');
+        arr[midPoint + i] = '#';
+        arr[midPoint - i] = '#';
+        output = arr.join('');
+        console.log(output);
+    }
+}
 
 module.exports = pyramid;
