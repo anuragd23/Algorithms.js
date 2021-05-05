@@ -7,6 +7,36 @@
 //   vowels('Why do you ask?') --> 4
 //   vowels('Why?') --> 0
 
-function vowels(str) {}
+function vowels(str) {
+    const arr = str.toLowerCase().split('');
+    let sum = 0;
+    const vowels = {
+        'a' : 1, 
+        'e' : 1, 
+        'i' : 1, 
+        'o' : 1, 
+        'u' : 1}; 
+    for(letter of arr) {
+        if (letter in vowels) sum++ ;    
+    }
+    return sum;
+}
 
 module.exports = vowels;
+
+
+// function vowels(str) {
+//     const strMap = {};
+//     const arr = str.toLowerCase().split('');
+//     let sum = 0;
+//     for(letter of arr) {
+//         if (strMap[letter]) strMap[letter]++ ;
+//         else strMap[letter] = 1;
+//     }
+//     const vowels = ['a', 'e', 'i', 'o', 'u'];
+//     for(letter of vowels) {
+//         if (strMap[letter]) sum = strMap[letter] + sum;
+//     }
+
+//     return sum;
+// }
