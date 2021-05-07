@@ -8,16 +8,15 @@
 //   vowels('Why?') --> 0
 
 function vowels(str) {
-    const arr = str.toLowerCase().split('');
     let sum = 0;
-    const vowels = {
+    const vowelsMap = {
         'a' : 1, 
         'e' : 1, 
         'i' : 1, 
         'o' : 1, 
         'u' : 1}; 
-    for(letter of arr) {
-        if (letter in vowels) sum++ ;    
+    for(let letter of str.toLowerCase()) {
+        if (letter in vowelsMap) sum++ ;    
     }
     return sum;
 }
