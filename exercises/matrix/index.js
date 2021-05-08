@@ -17,6 +17,9 @@
 
 function matrix(n) {
     const matrix = [];
+    for (let i = 0; i < n; i++) {
+        
+    }
 }
 
 module.exports = matrix;
