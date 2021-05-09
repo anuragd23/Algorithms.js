@@ -8,9 +8,20 @@
 // Example:
 //   fib(4) === 3
 
+const memory = [];
+
 function fib(n) {
-    if (n < 2) return n;
-    return fib(n - 1) + fib(n - 2);
+    
+    if(!memory[n]) {
+        if (n < 2) {
+            memory[n] = n;
+        }
+        else {
+            memory[n] = fib(n - 1) + fib(n - 2);
+        }
+    };
+
+    return memory[n];
 }
 
 module.exports = fib;
