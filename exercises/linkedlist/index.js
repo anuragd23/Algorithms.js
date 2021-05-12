@@ -103,7 +103,6 @@ class LinkedList {
         }
 
         else if(this.getAt(index) === this.getLast()) {
-            console.log("stuck!");
             this.removeLast();
         } 
 
@@ -134,6 +133,29 @@ class LinkedList {
             prevNode.next = newNode;
         }
     }
+
+    forEach(func) {
+
+        let tempNode = this.head;
+        func(tempNode);
+
+        while(tempNode.next) {
+            tempNode = tempNode.next;
+            func(tempNode);
+        }  
+
+    };
+
+    *[Symbol.iterator] () {
+        let node = this.head;
+
+        while(node) {
+            yield node;
+            node = node.next;
+        }
+    }
+
+    
 }
 
 module.exports = { Node, LinkedList };
