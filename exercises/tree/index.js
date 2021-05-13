@@ -18,17 +18,13 @@ class Node {
     }
 
     add(childData) {
-        const newNode = new Node(childData);
-        this.children.push(newNode);
+        this.children.push(new Node(childData));
     }
 
     remove(childData) {
-        for (let child of this.children) {
-            if (child.data === childData) {
-                this.children.pop(child);
-                break;
-            }
-        }
+        this.children = this.children.filter(child => {
+            return child.data !== childData;
+        });
     }
 }
 
