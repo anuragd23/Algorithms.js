@@ -22,21 +22,41 @@ class Node {
     insert(data) {
 
         if(data > this.data) {
-            if(!this.right) {
-                this.right = new Node(data);
-                return;
-            }
+            if(!this.right) this.right = new Node(data);
             else this.right.insert(data);
         }
 
-        if(data < this.data) {
-            if(!this.left) {
-                this.left = new Node(data);
-                return;
-            }
+        else if(data < this.data) {
+            if(!this.left) this.left = new Node(data);
             else this.left.insert(data);
         }
     }
+
+    contains(data) {
+
+        if (data === this.data) {
+            console.log(this);
+            return this;
+        }
+
+        else if(data > this.data) {
+            if(!this.right) {
+                console.log(data,"null");
+                return null;
+            }
+
+            else return this.right.contains(data);
+        }
+
+        else if(data < this.data) {
+            if(!this.left) {
+                console.log(data,"null");
+                return null;
+            }
+            else return this.left.contains(data);
+        }
+    }
 }
+
 
 module.exports = Node;
