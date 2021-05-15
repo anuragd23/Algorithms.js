@@ -36,16 +36,30 @@ class Tree {
 
     traverseBF(func) {
 
-        let nodesLeft = [];
-        if(this.root.children !== []) nodesLeft.push(this.root.children);
-        console.log(this.root.data);
-        func(this.root);
+        // let nodesLeft = [];
+        // if(this.root.children !== []) nodesLeft.push(this.root.children);
+        // console.log(this.root.data);
+        // func(this.root);
 
-        for(let children of nodesLeft) {
-            for(let child of children) {
-                if(child.children !== []) nodesLeft.push(child.children);
-                console.log(child.data);
-                func(child);
+        // for(let children of nodesLeft) {
+        //     for(let child of children) {
+        //         if(child.children !== []) nodesLeft.push(child.children);
+        //         console.log(child.data);
+        //         func(child);
+        //     }
+        // }
+
+
+        let nodesLeft = [this.root];
+
+        for (let node of nodesLeft) {
+            console.log(node.data);
+            func(node);
+
+            if (node.children !== []) {
+                for (let child of node.children) {
+                    nodesLeft.push(child);
+                }
             }
         }
     }
