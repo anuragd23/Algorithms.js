@@ -39,9 +39,19 @@ class Tree {
         let nodesLeft = [this.root];
         while(nodesLeft.length) {
             let node = nodesLeft.shift();
-            console.log(node.data);
             func(node);
             nodesLeft.push(...node.children);
+        }
+    }
+
+    traverseDF(func) {
+
+        let nodesLeft = [this.root];
+        while(nodesLeft.length) {
+            let node = nodesLeft.shift();
+            console.log(node.data);
+            func(node);
+            nodesLeft.unshift(...node.children);
         }
     }
 }
