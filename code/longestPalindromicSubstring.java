@@ -4,7 +4,7 @@ class Solution {
         
         if (s.length() < 2) return s;
         
-        for (int i = 0; i < s.length() - 1; i++) {
+        for (int i = 0; i < s.length(); i++) {
             findlongestSubstring(s, i, i);
             findlongestSubstring(s, i, i + 1);
         }
