@@ -1,30 +1,27 @@
-import java.util.*;
-
-class Program {
-  public static String longestPalindromicSubstring(String str) {
-    // Write your code here.
-		int[] odd = new int[2];
-		int[] even = new int[2];
-		int[] maxLength = new int[] {0, 1};
-		int[] currentLength = new int[2];
-		
-		for (int i = 1; i < str.length(); i++) {
-			odd = returnLongestSubstring(str, i - 1, i + 1);
-			even = returnLongestSubstring(str, i - 1, i);
-			
-			if (odd[1] - odd[0] > even[1] - even[0]) currentLength = odd;
-			else currentLength = even;
-			
-			if(currentLength[1] - currentLength[0] > maxLength[1] - maxLength[0]) maxLength = currentLength;
-		}
-    return str.substring(maxLength[0], maxLength[1]);
-  }
-	
-	public static int[] returnLongestSubstring(String str, int start, int end) {
-		while (start > -1 && end < str.length() && str.charAt(start) == str.charAt(end)) {
-			start--;
-			end++;
-		}
-		return new int[] {start + 1, end};
-	}
+class Solution {
+    private int globalStart = 0, globalEnd = 0;
+    public String longestPalindrome(String s) {
+        
+        if (s.length() < 2) return s;
+        
+        for (int i = 0; i < s.length() - 1; i++) {
+            findlongestSubstring(s, i, i);
+            findlongestSubstring(s, i, i + 1);
+        }
+        
+        return s.substring(globalStart, globalEnd);
+    }
+    
+    public void findlongestSubstring(String s, int start, int end) {
+        while (start >= 0 && end < s.length() && s.charAt(start) == s.charAt(end)) {
+            start--;
+            end++;
+        }
+        
+        if (end - start + 1 > globalEnd - globalStart + 1) {
+            globalStart = start + 1;
+            globalEnd= end; 
+        }
+        
+    }
 }
